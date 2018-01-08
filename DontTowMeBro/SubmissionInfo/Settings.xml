@@ -1,0 +1,6 @@
+<MarketplaceDetails>
+  <SmallAppTile>StopLight.png</SmallAppTile>
+  <ScreenShots>Home.png;Parking_Meter.png;Parking_Zone.png;;;;;;</ScreenShots>
+  <ScreenShotsWXGA>HomeWXGA.png;Parking_MeterWXGA.png;Parking_ZoneWXGA.png;;;;;;</ScreenShotsWXGA>
+  <ScreenShots720P>Home720.png;Parking_Meter720.png;Parking_Zone720.png;;;;;;</ScreenShots720P>
+</MarketplaceDetails>
