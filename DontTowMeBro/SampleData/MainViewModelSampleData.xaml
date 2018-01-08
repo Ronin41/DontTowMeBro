@@ -1,0 +1,13 @@
+﻿<vm:AccessIsoStore
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:DontTowMeBro.Helpers">
+
+    <vm:AccessIsoStore.Files>
+        <vm:UserLoadedFileName ID="0" file="test1.dat"/>
+        <vm:UserLoadedFileName ID="1" file="test2.dat"/>
+        <vm:UserLoadedFileName ID="2" file="test3.dat"/>
+    </vm:AccessIsoStore.Files>
+    
+</vm:AccessIsoStore>
+
