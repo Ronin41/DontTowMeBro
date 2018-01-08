@@ -1,0 +1,11 @@
+6 July 2014
+- Added highlight for last selection made on Parking Meter Lists
+8 July 2014
+
+Update 1.1.1
+- Fixed several bugs with Find My Car
+- Implemented user tracking
+- Added new map icons for car and user
+- Fixed several issues with Parking Meter list box highlights
+- Implemented zoom feature for user and car with icons located on the App Bar
+- Updated user guide
