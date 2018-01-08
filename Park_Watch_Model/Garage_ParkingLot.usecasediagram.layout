@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Garage_ParkingLot">
+  <useCaseModelRootMoniker Id="7e15402c-a4ba-470d-b917-a25092e6ec55" />
+  <nestedChildShapes>
+    <actorShape Id="6e33790e-acec-42cc-9e07-112117fe26b1" absoluteBounds="1.5, 1.75, 0.5, 0.5" isReference="false" heightOffset="0">
+      <actorMoniker Id="71ffc465-2dd9-4bd5-a5e3-aa918cfbd843" LastKnownName="WP8User" />
+      <relativeChildShapes />
+    </actorShape>
+    <SubsystemShape Id="35dc62b6-bec4-440c-b777-c0d2f013760a" absoluteBounds="2.75, 0.5, 7.75, 5.875" customColor="White">
+      <subsystemMoniker Id="c579d9b2-9901-4c14-acc9-36b5e9f445b3" LastKnownName="ParkWatch" />
+      <nestedChildShapes>
+        <useCaseShape Id="39d4b7eb-1380-419b-b83e-824ae7b0cffa" absoluteBounds="3, 1, 1.5, 0.875" customColor="238, 237, 131" heightOffset="0">
+          <useCaseMoniker Id="a7493e33-a4d3-4792-bfd9-e4f5f36c1156" LastKnownName="Open App" />
+          <relativeChildShapes />
+        </useCaseShape>
+      </nestedChildShapes>
+    </SubsystemShape>
+  </nestedChildShapes>
+</useCaseDiagram>

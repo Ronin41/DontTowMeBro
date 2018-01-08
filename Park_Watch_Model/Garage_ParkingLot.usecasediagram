@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7e15402c-a4ba-470d-b917-a25092e6ec55" name="Garage_ParkingLot" linkedPackageId="5d23e892-7c42-4c8f-8e0c-66385bcb4bcf" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <profileInstances>
+    <packageHasProfileInstances Id="78d88623-3ee3-478f-9bc3-74d3bde037e5">
+      <profileInstance Id="42d2ca46-4a60-41f0-9bce-89a93185991d" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="4034ed2e-06f6-4117-bb54-024a3dbd79e2">
+      <profileInstance Id="d8fda4c8-b152-4c83-8d41-261a43c1f0c9" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="71ffc465-2dd9-4bd5-a5e3-aa918cfbd843" name="WP8User" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d35b09a7-5931-49dc-9306-510edec4ba87" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a7493e33-a4d3-4792-bfd9-e4f5f36c1156" name="Open App" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fc3f54d5-3757-40ed-ad4c-5e6625fcef12" />
+        <subjects>
+          <subsystemMoniker Id="c579d9b2-9901-4c14-acc9-36b5e9f445b3" LastKnownName="ParkWatch" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="c579d9b2-9901-4c14-acc9-36b5e9f445b3" name="ParkWatch" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="87ca8099-db3f-4abd-9b30-f14928cc5855" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="5d23e892-7c42-4c8f-8e0c-66385bcb4bcf" name="Park_Watch_Model">
+    <elementDefinition Id="eff0e556-aee9-46c5-98d2-63c495b65267" />
+  </package>
+</useCaseModelRoot>
