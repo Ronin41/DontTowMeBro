@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AdSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<CultureDescriptors CultureName="">
+    <AdDuplex AppId="109671" Probability="40"/>
+    <Smaato AppId="0" SecondaryId="0" Probability="0"/>
+    <PubCenter AppId="1e9e642d-3a15-4068-9bed-5c0b449edbf0" SecondaryId="10801466" Probability="60"/>
+    <Inmobi AppId="ec9ea8fdfcc3436e94df0f5bcac3a227" Probability="0"/>
+    <MobFox AppId="474b65a3575dcbc261090efb2b996301=" IsTest="false" Probability="0"/>
+    <AdMob AppId="a14e5b8669ef367" Probability="10"/>
+    <InnerActive AppId="ZenithMoon_Studios_StarterSeriesGames_WP"  Probability="0"/>
+    <AdGroup Probability="0">
+      <AdDuplex AppId="1379" Probability="40"/>
+      <PubCenter AppId="1e9e642d-3a15-4068-9bed-5c0b449edbf0" SecondaryId="10801466" Probability="60"/>
+		</AdGroup>
+	</CultureDescriptors>
+</AdSettings>

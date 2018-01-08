@@ -1,0 +1,248 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:adRotator="clr-namespace:AdRotator;assembly=AdRotator"
+    xmlns:Controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls"
+    xmlns:UI="clr-namespace:Microsoft.Advertising.Mobile.UI;assembly=Microsoft.Advertising.Mobile.UI"
+    x:Class="DontTowMeBro.MainPage"
+    
+    mc:Ignorable="d"
+   
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True" Unloaded="PhoneApplicationPage_Unloaded">
+
+
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+
+
+
+        <!--Pivot Control-->
+        <phone:Pivot Title="PARK-WATCH" x:Name="parkingPivot">
+            <!--Pivot item one-->
+            <phone:PivotItem Header="home">
+                <Grid x:Name="HomePage" Background="Transparent">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="327*"/>
+                        <RowDefinition Height="82*"/>
+                        <RowDefinition Height="90*"/>
+                        <RowDefinition Height="104*"/>
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <!--Map Tool-->
+                    <maps:Map Grid.Row="0" Grid.ColumnSpan="2" x:Name="AppMap" Margin="0,0,0,10" Loaded="AppMap_Loaded" PedestrianFeaturesEnabled="True" />
+
+                    <!--Info Panel-->
+                    <Button x:Name="btnSafe" Grid.Column="0" Background="Green" Margin="18,10,10,0" Grid.Row="1" VerticalAlignment="Top" Height="66"/>
+
+                    <TextBox  Text="00:00:00" TextAlignment="Center" x:Name="tbCountDown" 
+						FontWeight="Bold" FontSize="40" Margin="18,0,10,102" Grid.Row="2" RenderTransformOrigin="0.46,1.304" VerticalAlignment="Bottom" Grid.RowSpan="2" Height="92"/>
+                    <!--<UI:AdControl ApplicationId="1e9e642d-3a15-4068-9bed-5c0b449edbf0" 
+                                  AdUnitId="10801466" Margin="-24,14,0,10" Grid.Row="3" Grid.ColumnSpan="2"
+                                  Height="80" Width="480" Visibility="Collapsed" />-->
+                    <adRotator:AdRotatorControl x:Name="AdRotatorControl" Width="480" 
+                                                Height="80" Grid.ColumnSpan="2" Grid.Row="3"
+                                                LocalSettingsLocation="defaultAdSettings.xml" AutoStartAds="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <Button Name="btnFindMyCar" Content="Find My Car" Grid.Column="1" Margin="32,0,10,80" 
+                            RenderTransformOrigin="-0.568,0.111" Click="btnFindMyCar_Click" Canvas.ZIndex="-1" BorderThickness="0" Grid.Row="1" Grid.RowSpan="2" >
+                        <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="/Assets/Red_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button Name="btnDirections" Content="Directions" Grid.Column="1" 
+                            Margin="32,0,10,103" Grid.Row="2" Click="btnDirections_Click" BorderThickness="0" Grid.RowSpan="2" >
+                        <Button.Background>
+                            <ImageBrush Stretch="Fill" ImageSource="/Assets/Start_Button.png"/>
+                        </Button.Background>
+                    </Button>
+
+                </Grid>
+            </phone:PivotItem>
+
+            <!--Pivot item two-->
+            <phone:PivotItem Header="parking meter" Margin="14,26,10,2">
+                <Grid x:Name="ParkingMeter" Background="Transparent" Margin="0,66,0,10">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="53*"/>
+                        <RowDefinition Height="172*"/>
+                        <RowDefinition Height="135*"/>
+                        <RowDefinition Height="103*"/>
+                        <RowDefinition Height="64*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="METER MINS" Grid.Row="0" Grid.Column="0" TextAlignment="Center"/>
+                    <TextBlock Text="WARNING MINS" Grid.Row="0" Grid.Column="1" TextAlignment="Center" Grid.ColumnSpan="2" 
+                               Margin="142,0,10,0"/>
+
+
+
+                    <phone:LongListSelector x:Name="pmLBMeterTime" Width="150" Grid.Column="0" Grid.Row="1" 
+						Style="{StaticResource TextSelectionStyle}" SelectionChanged="pmLBMeterTime_SelectionChanged" Margin="1,0,1,61" 
+                                            Grid.RowSpan="2" Loaded="pmLBMeterTime_Loaded"  />
+
+                    <phone:LongListSelector x:Name="pmLBWarningTime" Width="150" Grid.Column="2" Grid.Row="1"
+						Style="{StaticResource TextSelectionStyle}" SelectionChanged="pmLBWarningTime_SelectionChanged" Margin="1,0,1,61" 
+                                            Grid.RowSpan="2" Loaded="pmLBWarningTime_Loaded"/>
+
+
+
+                    <!--Get Current Location-->
+                    <TextBox x:Name="tbPMCurrentLocation" Text="CurrentLoc" Background="WhiteSmoke" 
+						Grid.Column="0" Grid.Row="4" Margin="10,0,49,-15" />
+                    <!--Start Button -->
+                    <Button x:Name="btnPMStart" Grid.Row="2" Content="START" FontSize="30" 
+                            Click="btnPMStart_Click" Grid.Column="0" 
+						VerticalAlignment="Bottom" Height="110" HorizontalAlignment="Right" 
+                            Width="147" Margin="0,0,9,10" Grid.RowSpan="2" BorderThickness="0"
+                            >
+                        <Button.Background>
+                            <ImageBrush ImageSource="/Assets/Start_Button.png" Stretch="UniformToFill"/>
+                        </Button.Background>
+                    </Button>
+                    <!--Reset Button-->
+                    <Button x:Name="btnPMReset" Grid.Row="2" Content="Reset" FontSize="30" 
+                            Click="btnPMReset_Click" Height="110" VerticalAlignment="Bottom" Grid.Column="2" 
+                            HorizontalAlignment="Right" Width="142" Margin="0,0,9,10" Grid.RowSpan="2" BorderThickness="0" >
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Red_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <!-- Implement Bullseye image -->
+                    <Button x:Name="btnPMSetLoc" Grid.Row="2" Content="GPS" 
+						FontSize="30" Click="btnPMSetLoc_Click" Width="147" 
+						Height="110" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.RowSpan="2" Grid.Column="1" BorderThickness="0" Margin="0,0,5,10" >
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Red_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <!--<UI:AdControl ApplicationId="1e9e642d-3a15-4068-9bed-5c0b449edbf0" 
+                                  AdUnitId="10801465" Grid.ColumnSpan="3" 
+                                  HorizontalAlignment="Left" Height="80" 
+                                  Margin="-24,77,-30,0" VerticalAlignment="Top" 
+                                  Width="510" Grid.Row="3" Grid.RowSpan="2"/>-->
+                    <adRotator:AdRotatorControl x:Name="AdRotatorControlMeter" Width="480" 
+                                                Height="80" Grid.ColumnSpan="3" Grid.Row="4"
+                                                LocalSettingsLocation="defaultAdSettingsZone.xml" AutoStartAds="True" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+                </Grid>
+            </phone:PivotItem>
+
+            <phone:PivotItem Header="parking zone">
+                <Grid x:Name="ParkingZoneGrid" Background="Transparent">
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+
+
+                    <Button x:Name="pzBtnStart" Content="Start" Grid.Column="0" Grid.Row="4" 
+						Grid.ColumnSpan="2" Click="pzBtnStart_Click" Margin="0,10,0,91" Grid.RowSpan="2"
+                            FontSize="30" BorderThickness="0">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Start_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="pzBtnLoc" Content="GPS" Grid.Column="2" Grid.Row="4" 
+						Click="pzBtnLoc_Click" Margin="0,10,0,91" Grid.RowSpan="2"
+                            FontSize="30" BorderThickness="0">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Red_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="pzBtnReset" Content="Reset" Grid.Column="3" Grid.Row="4" Click="pzBtnReset_Click" 
+                            Margin="0,10,-10,91" Grid.RowSpan="2" FontSize="30" BorderThickness="0">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Red_Button.png"/>
+                        </Button.Background>
+                    </Button>
+
+
+                    <Button x:Name="btnPZSetStart" Content="Set Start" HorizontalAlignment="Left" VerticalAlignment="Top" 
+						Grid.ColumnSpan="3" Width="332" Height="100" Click="btnPZSetStart_Click" Margin="10,10,0,0" BorderThickness="0"
+                            FontSize="30" Grid.RowSpan="2">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Start_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnPZSetStop"  Content="Set Stop" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" 
+						Grid.ColumnSpan="3" Width="332" Height="100" Click="btnPZSetStop_Click" Margin="10,9,0,0" BorderThickness="0"
+                            FontSize="30" Grid.RowSpan="2">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Start_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Button x:Name="btnPZSetWarn" Content="Set Warning" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" 
+						Grid.ColumnSpan="3" Width="332" Height="100" Click="btnPZSetWarn_Click" Margin="10,14,0,0" BorderThickness="0"
+                            FontSize="30" Grid.RowSpan="2">
+                        <Button.Background>
+                            <ImageBrush Stretch="UniformToFill" ImageSource="/Assets/Start_Button.png"/>
+                        </Button.Background>
+                    </Button>
+                    <Ellipse x:Name="startSetIndicator" Grid.Column="3" Fill="Yellow" HorizontalAlignment="Center" 
+						Height="54" Margin="26,37,26,10" Stroke="Black" 
+						VerticalAlignment="Center" Width="62" 
+						RenderTransformOrigin="0.048,1" Loaded="startSetIndicator_Loaded"/>
+                    <Ellipse x:Name="stopSetIndicator" Grid.Column="3" Fill="Yellow" HorizontalAlignment="Center" 
+						Height="54" Margin="26,36,26,10" Grid.Row="1" Stroke="Black" 
+						VerticalAlignment="Center" Width="62" 
+						RenderTransformOrigin="0.048,1" Loaded="stopSetIndicator_Loaded"/>
+                    <Ellipse x:Name="warnSetIndicator" Grid.Column="3" Fill="Yellow" HorizontalAlignment="Center" 
+						Height="54" Margin="26,37,26,10" Grid.Row="2" Stroke="Black" 
+						VerticalAlignment="Center" Width="62" 
+						RenderTransformOrigin="0.048,1" Loaded="warnSetIndicator_Loaded"/>
+
+                    <!--UI:AdControl ApplicationId="1e9e642d-3a15-4068-9bed-5c0b449edbf0" AdUnitId="10801466" 
+                                  Grid.ColumnSpan="4" HorizontalAlignment="Left" Height="80" Margin="-14,9,-10,0" Grid.Row="5" 
+                                  VerticalAlignment="Top" Width="480"/>-->
+
+                    <adRotator:AdRotatorControl x:Name="AdRotatorControlZone" Width="480" 
+                                                Height="80" Grid.ColumnSpan="4" Grid.Row="5"
+                                                LocalSettingsLocation="defaultAdSettings.xml" AutoStartAds="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+
+        <!--Uncomment to see an alignment grid to help ensure your controls are
+            aligned on common boundaries.  The image has a top margin of -32px to
+            account for the System Tray. Set this to 0 (or remove the margin altogether)
+            if the System Tray is hidden.
+
+            Before shipping remove this XAML and the image itself.-->
+        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" IsHitTestVisible="False" />-->
+    </Grid>
+
+</phone:PhoneApplicationPage>
